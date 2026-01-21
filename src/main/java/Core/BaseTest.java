@@ -16,7 +16,6 @@ public class BaseTest {
 
     public RequestSpecification requestSpecification;
     public SoftAssert softAssert;
-
     @BeforeMethod
     public void setupMethod(Method method) throws IOException {
         softAssert = new SoftAssert();
@@ -30,7 +29,7 @@ public class BaseTest {
                 .filter(new LoggingFilter())
                 .baseUri(PropertyReader.getProperty("serverAddress"))
                 .header("Content-Type", "application/json")
-                .header("x-api-key", "reqres-free-v1");
+                .header("Authorization", "Bearer "+PropertyReader.getProperty("authToken"));
     }
 
 }
