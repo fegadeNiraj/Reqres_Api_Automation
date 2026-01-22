@@ -3,11 +3,10 @@ import Pojo.User;
 import Utils.JsonReader;
 import Utils.RetryAnalyzer;
 import Utils.Routes;
+import com.fasterxml.jackson.databind.JsonNode;
 import io.restassured.response.Response;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 import Enum.StatusCode;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,9 +30,10 @@ public class NegativeTests extends BaseTest {
     }
 
     @Test(description = "Testcase to check user login with missing password",retryAnalyzer = RetryAnalyzer.class)
-    public void testLoginUserWithMissingPassword() throws IOException, ParseException {
+    public void testLoginUserWithMissingPassword() {
         Map<String, String> loginBody = new HashMap<>();
-        loginBody.put("email", JsonReader.getJsonData("email"));
+        JsonNode root = JsonReader.getRoot();
+        loginBody.put("email",root.get("email").asText());
         Response response =
                         requestSpecification
                         .when()
@@ -49,9 +49,10 @@ public class NegativeTests extends BaseTest {
     }
 
     @Test(description = "Testcase to check user register with missing emailID",retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterUserWithMissingEmail() throws IOException, ParseException {
+    public void testRegisterUserWithMissingEmail() {
         Map<String, String> registerBody = new HashMap<>();
-        registerBody.put("password", JsonReader.getJsonData("password"));
+        JsonNode root = JsonReader.getRoot();
+        registerBody.put("password",root.get("password").asText());
         Response response =
                         requestSpecification
                         .when()
@@ -67,9 +68,10 @@ public class NegativeTests extends BaseTest {
     }
 
     @Test(description = "Testcase to check user register with missing password",retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterUserWithMissingPassword() throws IOException, ParseException {
+    public void testRegisterUserWithMissingPassword() {
         Map<String, String> registerBody = new HashMap<>();
-        registerBody.put("email", JsonReader.getJsonData("email"));
+        JsonNode root = JsonReader.getRoot();
+        registerBody.put("email",root.get("email").asText());
         Response response =
                         requestSpecification
                         .when()

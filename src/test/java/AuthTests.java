@@ -2,21 +2,21 @@ import Core.BaseTest;
 import Utils.JsonReader;
 import Utils.RetryAnalyzer;
 import Utils.Routes;
+import com.fasterxml.jackson.databind.JsonNode;
 import io.restassured.response.Response;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 import Enum.StatusCode;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AuthTests extends BaseTest
 {
     @Test(description = "Testcase to test user login",retryAnalyzer = RetryAnalyzer.class)
-    public void testLoginUser() throws IOException, ParseException {
+    public void testLoginUser() {
         Map<String,String> loginBody = new HashMap<>();
-        loginBody.put("email",JsonReader.getJsonData("email"));
-        loginBody.put("password",JsonReader.getJsonData("password"));
+        JsonNode root = JsonReader.getRoot();
+        loginBody.put("email",root.get("email").asText());
+        loginBody.put("password",root.get("password").asText());
         Response response =
                         requestSpecification
                         .when()
@@ -32,10 +32,11 @@ public class AuthTests extends BaseTest
     }
 
     @Test(description = "Testcase to test user registration",retryAnalyzer = RetryAnalyzer.class)
-    public void testRegisterUser() throws IOException, ParseException {
+    public void testRegisterUser() {
         Map<String,String> registerBody = new HashMap<>();
-        registerBody.put("email",JsonReader.getJsonData("email"));
-        registerBody.put("password",JsonReader.getJsonData("password"));
+        JsonNode root = JsonReader.getRoot();
+        registerBody.put("email",root.get("email").asText());
+        registerBody.put("password",root.get("password").asText());
         Response response =
                         requestSpecification
                         .when()
