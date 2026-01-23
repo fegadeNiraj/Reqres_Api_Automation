@@ -16,11 +16,11 @@ public class LoggingUtil
     private static final ObjectMapper mapper = new ObjectMapper()
             .enable(SerializationFeature.INDENT_OUTPUT);
 
-    public static void logRequest(ExtentTest test, String method,String endpint,Object requestBody)
+    public static void logRequest(ExtentTest test, String method,String endpoint,Object requestBody)
     {
         Map<String,Object> logMap = new HashMap<>();
         logMap.put("Method",method);
-        logMap.put("Endpoint",endpint);
+        logMap.put("Endpoint",endpoint);
 
         if(requestBody == null)
         {
