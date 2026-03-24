@@ -18,6 +18,20 @@ It includes reporting, logging, data-driven testing, and CI/CD integration.
 
 ---
 
+## Tech Stack
+
+Language: Java
+
+Build Tool: Maven
+
+Test Runner: TestNG
+
+Frameworks: Rest Assured
+
+Reports: Allure, Extent
+
+CI/CD: Jenkinsfile included
+
 ## 📂 Project Structure
 ```
 src
@@ -85,18 +99,4 @@ allure serve allure-results
 ![Extent Report Screenshot](Screenshots/ExtentReportGraph.png)
 
 ---
-
-## Tech Stack
-
-Language: Java
-
-Build Tool: Maven
-
-Test Runner: TestNG
-
-Frameworks: Rest Assured
-
-Reports: Allure, Extent
-
-CI/CD: Jenkinsfile included
 
