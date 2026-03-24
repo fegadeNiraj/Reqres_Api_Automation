@@ -44,7 +44,7 @@ src
 1. Clone this repo:
 
 ```bash
-git clone <https://github.com/Niraj98-QA/Reqres_Api_Automation.git>
+git clone <https://github.com/fegadeNiraj/Reqres_Api_Automation.git>
 ```
 
 ## Run tests with Maven:
@@ -87,7 +87,7 @@ allure serve allure-results
 ---
 
 ## Tech Stack
-```
+
 Language: Java
 
 Build Tool: Maven
@@ -100,4 +100,3 @@ Reports: Allure, Extent
 
 CI/CD: Jenkinsfile included
 
-```
